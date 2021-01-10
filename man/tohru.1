@@ -1,0 +1,75 @@
+.Dd $Mdocdate: July 11 2020 $
+.Dt tohru 1
+.Os
+.Sh NAME
+.Nm tohru
+.Nd package manager
+.Sh SYNOPSIS
+.Nm
+.Op Fl HNLR
+.Fl acdefi
+.Ar pkg ...
+.Nm
+.Op Fl NLR
+.Fl l
+.Cm files | mdeps | rdeps
+.Op Ar pkg ...
+.Nm
+.Fl u
+.Sh DESCRIPTION
+The
+.Nm
+utility executes the set operation to each
+.Ar pkg .
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl a
+Set the operations to fetch and explode, and the database to remote.
+.It Fl c
+Set the operation to check, and the database to local.
+.It Fl d
+Set the operation to delete and the database to local.
+.It Fl e
+Set the operations to explode and register, and the database to remote.
+.It Fl f
+Set the operation to fetch and the database to remote.
+.It Fl i
+Set the operation to info and the database to local.
+.It Fl L
+Set the database to local.
+.It Fl l
+Set the operation to list and the database to local.
+.It Fl N
+Set the database to null, and the register operation to copy.
+.It Fl R
+Set the database to remote.
+.It Fl S
+Set the register operation to symlink.
+.It Fl u
+Set the operation to update.
+.El
+.Ss Operations
+.Bl -tag -width register
+.It check
+Check all the package files and report any corrupted file.
+.It explode
+Uncompress and unarchive the fetched package to the root system.
+.It delete
+Remove all the package files from the root system and its entry from the
+set database.
+.It fetch
+Fetch a package from the repository.
+.It register
+Add an entry from the set database to the local one.
+.It update
+Populate the remote database and fetch the chksum file.
+.El
+.Sh FILES
+.Bl -tag -width XXXXXXXXXXXXXXXXXXXXXXXX -compat
+.It Pa $HOME/.config/tohru.conf
+.It Pa /etc/tohru.conf
+.El
+.Sh EXIT STATUS
+.Ex -std
+.Sh SEE ALSO
+.Xr tohru-pkgdesc 5
